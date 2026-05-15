@@ -144,22 +144,12 @@
             border: 1px solid #EFE5DB;
             transition: all 0.2s;
             min-height: 80px;
-            position: relative;
         }
         .calendar-day:hover { background: #F5EDE3; transform: scale(1.02); }
         .calendar-day.has-idea { background: #EBDDCB; border-color: #D4BFA8; }
         .calendar-day.today { background: #D4BFA8; color: white; }
-        .calendar-day.today .idea-badge { color: #3D2B1F; }
         .calendar-day.empty { background: transparent; border-color: transparent; box-shadow: none; }
-        .idea-badge { 
-            font-size: 0.65rem; 
-            display: block; 
-            margin-top: 6px; 
-            color: #A4815C; 
-            word-break: break-word; 
-            line-height: 1.2;
-            font-weight: 500;
-        }
+        .idea-badge { font-size: 0.65rem; display: block; margin-top: 6px; color: #A4815C; word-break: break-word; line-height: 1.2; }
         .alert-banner {
             background: #FFF3E8;
             border-radius: 60px;
@@ -182,7 +172,6 @@
         footer { text-align: center; margin-top: 48px; color: #CCBFAD; font-family: 'Caveat', cursive; padding: 20px; font-size: 0.9rem; }
         @media (max-width: 900px) { .period-list { flex-direction: row; flex-wrap: wrap; } .main-content { padding: 20px; } }
         .month-title { font-size: 1.1rem; font-weight: 600; color: #A4815C; margin-bottom: 12px; text-align: center; }
-        .frase { font-family: 'Caveat', cursive; font-size: 1.1rem; color: #B29476; margin-top: 8px; }
     </style>
 </head>
 <body>
@@ -209,15 +198,11 @@
 </div>
 
 <script>
-// ==================== DATOS COMPLETOS AÑO 1 CON TODAS LAS IDEAS ====================
+// ==================== DATOS COMPLETOS AÑO 1 - CON TODAS LAS IDEAS ====================
 const MESES = [
     {
-        id: 1,
-        nombre: "Mayo 2026 (15-31)",
-        tema: "El internet se siente vacío",
-        tipo: "nocturno",
-        fechaInicio: "2026-05-15",
-        fechaFin: "2026-05-31",
+        id: 1, nombre: "Mayo 2026 (15-31)", tipo: "nocturno",
+        fechaInicio: "2026-05-15", fechaFin: "2026-05-31",
         horario: [
             { hora: "11:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "11:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -244,12 +229,8 @@ const MESES = [
         }
     },
     {
-        id: 2, 
-        nombre: "Junio 2026", 
-        tema: "La nostalgia que no nos pertenece",
-        tipo: "estandar", 
-        fechaInicio: "2026-06-01", 
-        fechaFin: "2026-06-30",
+        id: 2, nombre: "Junio 2026", tipo: "estandar",
+        fechaInicio: "2026-06-01", fechaFin: "2026-06-30",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -264,23 +245,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: estética de los 2000", 
+            "1": "📹 Short: estética de los 2000",
             "3": "📹 Short: ¿POR QUÉ AMAMOS LO VIEJO?",
-            "5": "📹 Short: el vhs se sentía real", 
+            "5": "📹 Short: el vhs se sentía real",
             "7": "📹 Short: SONIDOS QUE DAN PAZ",
-            "9": "📹 Short: extrañar algo que no pasó", 
+            "9": "📹 Short: extrañar algo que no pasó",
             "11": "📹 Short: LOS JUEGOS DE ANTES",
-            "13": "📹 Short: memorias prestadas", 
+            "13": "📹 Short: memorias prestadas",
             "28": "🎬 Largo: EXTRAÑAR UNA ÉPOCA QUE NO VIVIMOS"
         }
     },
     {
-        id: 3, 
-        nombre: "Julio 2026", 
-        tema: "La paradoja de estar siempre 'conectado'",
-        tipo: "estandar", 
-        fechaInicio: "2026-07-01", 
-        fechaFin: "2026-07-31",
+        id: 3, nombre: "Julio 2026", tipo: "estandar",
+        fechaInicio: "2026-07-01", fechaFin: "2026-07-31",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -295,23 +272,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: tengo 500 amigos y nadie con quien hablar", 
+            "1": "📹 Short: tengo 500 amigos y nadie con quien hablar",
             "3": "📹 Short: EL MIEDO AL VISTO",
-            "5": "📹 Short: borré mis redes por un día", 
+            "5": "📹 Short: borré mis redes por un día",
             "7": "📹 Short: ESTAMOS SOLOS?",
-            "9": "📹 Short: la presión de responder", 
+            "9": "📹 Short: la presión de responder",
             "11": "📹 Short: NADIE ESTÁ PRESENTE",
-            "13": "📹 Short: notificaciones vacías", 
+            "13": "📹 Short: notificaciones vacías",
             "28": "🎬 Largo: POR QUÉ NOS SENTIMOS SOLOS ESTANDO CONECTADOS"
         }
     },
     {
-        id: 4, 
-        nombre: "Agosto 2026", 
-        tema: "El parálisis por exceso de opciones",
-        tipo: "estandar", 
-        fechaInicio: "2026-08-01", 
-        fechaFin: "2026-08-31",
+        id: 4, nombre: "Agosto 2026", tipo: "estandar",
+        fechaInicio: "2026-08-01", fechaFin: "2026-08-31",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -326,23 +299,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: media hora eligiendo qué ver", 
+            "1": "📹 Short: media hora eligiendo qué ver",
             "3": "📹 Short: EL ALGORITMO ME CONOCE?",
-            "5": "📹 Short: demasiadas opciones", 
+            "5": "📹 Short: demasiadas opciones",
             "7": "📹 Short: no quiero elegir más",
-            "9": "📹 Short: NETFLIX ME ABURRE", 
+            "9": "📹 Short: NETFLIX ME ABURRE",
             "11": "📹 Short: la trampa del catálogo",
-            "13": "📹 Short: CONSUMIR POR CONSUMIR", 
+            "13": "📹 Short: CONSUMIR POR CONSUMIR",
             "28": "🎬 Largo: LA PARÁLISIS DE TENER TODO Y NO QUERER NADA"
         }
     },
     {
-        id: 5, 
-        nombre: "Septiembre 2026", 
-        tema: "Lugares que no deberían existir",
-        tipo: "estandar", 
-        fechaInicio: "2026-09-01", 
-        fechaFin: "2026-09-30",
+        id: 5, nombre: "Septiembre 2026", tipo: "estandar",
+        fechaInicio: "2026-09-01", fechaFin: "2026-09-30",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -357,23 +326,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: pasillos vacíos", 
+            "1": "📹 Short: pasillos vacíos",
             "3": "📹 Short: LUGARES QUE YA VISTE EN SUEÑOS",
-            "5": "📹 Short: el silencio de un mall de noche", 
+            "5": "📹 Short: el silencio de un mall de noche",
             "7": "📹 Short: ESPACIOS LIMINALES",
-            "9": "📹 Short: soñar con escuelas vacías", 
+            "9": "📹 Short: soñar con escuelas vacías",
             "11": "📹 Short: NO HAY NADIE AQUÍ",
-            "13": "📹 Short: la paz de lo extraño", 
+            "13": "📹 Short: la paz de lo extraño",
             "28": "🎬 Largo: LUGARES QUE TE HACEN SENTIR EXTRAÑO"
         }
     },
     {
-        id: 6, 
-        nombre: "Octubre 2026", 
-        tema: "La mentira de la productividad",
-        tipo: "estandar", 
-        fechaInicio: "2026-10-01", 
-        fechaFin: "2026-10-31",
+        id: 6, nombre: "Octubre 2026", tipo: "estandar",
+        fechaInicio: "2026-10-01", fechaFin: "2026-10-31",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -388,23 +353,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: odio ser productivo", 
+            "1": "📹 Short: odio ser productivo",
             "3": "📹 Short: PERDER EL TIEMPO ES NECESARIO",
-            "5": "📹 Short: no eres una máquina", 
+            "5": "📹 Short: no eres una máquina",
             "7": "📹 Short: el cansancio de los 20 años",
-            "9": "📹 Short: DÍAS DE NO HACER NADA", 
+            "9": "📹 Short: DÍAS DE NO HACER NADA",
             "11": "📹 Short: la culpa de descansar",
-            "13": "📹 Short: STOP HUSTLE CULTURE", 
+            "13": "📹 Short: STOP HUSTLE CULTURE",
             "28": "🎬 Largo: LA MENTIRA DE QUE SIEMPRE DEBES HACER ALGO"
         }
     },
     {
-        id: 7, 
-        nombre: "Noviembre 2026", 
-        tema: "Lo que el internet nos quitó",
-        tipo: "estandar", 
-        fechaInicio: "2026-11-01", 
-        fechaFin: "2026-11-30",
+        id: 7, nombre: "Noviembre 2026", tipo: "estandar",
+        fechaInicio: "2026-11-01", fechaFin: "2026-11-30",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -419,23 +380,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: cuando el internet era divertido", 
+            "1": "📹 Short: cuando el internet era divertido",
             "3": "📹 Short: FOROS MUERTOS",
-            "5": "📹 Short: ya no hay misterios en la web", 
+            "5": "📹 Short: ya no hay misterios en la web",
             "7": "📹 Short: la era del perfil perfecto",
-            "9": "📹 Short: INTERNET ANTES DE LAS MARCAS", 
+            "9": "📹 Short: INTERNET ANTES DE LAS MARCAS",
             "11": "📹 Short: nostalgia de msn",
-            "13": "📹 Short: LA WEB ERA MEJOR", 
+            "13": "📹 Short: LA WEB ERA MEJOR",
             "28": "🎬 Largo: EL INTERNET YA NO SE SIENTE IGUAL"
         }
     },
     {
-        id: 8, 
-        nombre: "Diciembre 2026", 
-        tema: "Miedos generacionales silenciosos",
-        tipo: "estandar", 
-        fechaInicio: "2026-12-01", 
-        fechaFin: "2026-12-31",
+        id: 8, nombre: "Diciembre 2026", tipo: "estandar",
+        fechaInicio: "2026-12-01", fechaFin: "2026-12-31",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -450,23 +407,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: miedo al futuro", 
+            "1": "📹 Short: miedo al futuro",
             "3": "📹 Short: EL MUNDO SE SIENTE RÁPIDO",
-            "5": "📹 Short: ¿qué estamos haciendo aquí?", 
+            "5": "📹 Short: ¿qué estamos haciendo aquí?",
             "7": "📹 Short: solo quiero estar tranquilo",
-            "9": "📹 Short: TENER 20 Y NO SABER NADA", 
+            "9": "📹 Short: TENER 20 Y NO SABER NADA",
             "11": "📹 Short: la prisa de todos",
-            "13": "📹 Short: MIEDO A CRECER", 
+            "13": "📹 Short: MIEDO A CRECER",
             "28": "🎬 Largo: COSAS QUE NOS DAN MIEDO Y NO DECIMOS"
         }
     },
     {
-        id: 9, 
-        nombre: "Enero 2027", 
-        tema: "El costo de la 'estética'",
-        tipo: "estandar", 
-        fechaInicio: "2027-01-01", 
-        fechaFin: "2027-01-31",
+        id: 9, nombre: "Enero 2027", tipo: "estandar",
+        fechaInicio: "2027-01-01", fechaFin: "2027-01-31",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -481,23 +434,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: mi vida no es un edit", 
+            "1": "📹 Short: mi vida no es un edit",
             "3": "📹 Short: FINGIR QUE TODO ES LINDO",
-            "5": "📹 Short: el costo de la estética", 
+            "5": "📹 Short: el costo de la estética",
             "7": "📹 Short: sé real",
-            "9": "📹 Short: LA DICTADURA DE LO BONITO", 
+            "9": "📹 Short: LA DICTADURA DE LO BONITO",
             "11": "📹 Short: fotos que no dicen nada",
-            "13": "📹 Short: ROMANTIZAR LA TRISTEZA", 
+            "13": "📹 Short: ROMANTIZAR LA TRISTEZA",
             "28": "🎬 Largo: POR QUÉ TODO TIENE QUE VERSE PERFECTO AHORA"
         }
     },
     {
-        id: 10, 
-        nombre: "Febrero 2027", 
-        tema: "La saturación del mundo moderno",
-        tipo: "estandar", 
-        fechaInicio: "2027-02-01", 
-        fechaFin: "2027-02-28",
+        id: 10, nombre: "Febrero 2027", tipo: "estandar",
+        fechaInicio: "2027-02-01", fechaFin: "2027-02-28",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -512,23 +461,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: demasiados colores", 
+            "1": "📹 Short: demasiados colores",
             "3": "📹 Short: LUCES NEÓN Y CANSANCIO",
-            "5": "📹 Short: quiero ver el cielo", 
+            "5": "📹 Short: quiero ver el cielo",
             "7": "📹 Short: estamos sobreestimulados",
-            "9": "📹 Short: EL RUIDO DE LA CIUDAD", 
+            "9": "📹 Short: EL RUIDO DE LA CIUDAD",
             "11": "📹 Short: saturación visual",
-            "13": "📹 Short: NECESITO SILENCIO", 
+            "13": "📹 Short: NECESITO SILENCIO",
             "28": "🎬 Largo: EL MUNDO ES DEMASIADO RUIDOSO"
         }
     },
     {
-        id: 11, 
-        nombre: "Marzo 2027", 
-        tema: "Cómo nos queremos hoy",
-        tipo: "estandar", 
-        fechaInicio: "2027-03-01", 
-        fechaFin: "2027-03-31",
+        id: 11, nombre: "Marzo 2027", tipo: "estandar",
+        fechaInicio: "2027-03-01", fechaFin: "2027-03-31",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -543,23 +488,19 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: amigos de internet", 
+            "1": "📹 Short: amigos de internet",
             "3": "📹 Short: ¿CUÁNTO DURA UN MENSAJE?",
-            "5": "📹 Short: conocer a alguien de verdad", 
+            "5": "📹 Short: conocer a alguien de verdad",
             "7": "📹 Short: adiós sin despedirse",
-            "9": "📹 Short: AMOR POR DM", 
+            "9": "📹 Short: AMOR POR DM",
             "11": "📹 Short: la fragilidad de un chat",
-            "13": "📹 Short: GHOSTING DIGITAL", 
+            "13": "📹 Short: GHOSTING DIGITAL",
             "28": "🎬 Largo: CÓMO CAMBIÓ LA FORMA EN QUE NOS QUEREMOS"
         }
     },
     {
-        id: 12, 
-        nombre: "Abril 2027", 
-        tema: "Cerrando el ciclo",
-        tipo: "estandar", 
-        fechaInicio: "2027-04-01", 
-        fechaFin: "2027-04-30",
+        id: 12, nombre: "Abril 2027", tipo: "estandar",
+        fechaInicio: "2027-04-01", fechaFin: "2027-04-30",
         horario: [
             { hora: "08:00", actividad: "Levantar + ordenar + higiene", duracion: 30 },
             { hora: "08:30", actividad: "Desayuno + lavar dientes", duracion: 30 },
@@ -574,13 +515,13 @@ const MESES = [
             { hora: "22:00", actividad: "Dormir", duracion: 600 }
         ],
         ideas: {
-            "1": "📹 Short: mirar atrás", 
+            "1": "📹 Short: mirar atrás",
             "3": "📹 Short: LO QUE PROMETIERON Y LO QUE FUE",
-            "5": "📹 Short: un año de reflexiones", 
+            "5": "📹 Short: un año de reflexiones",
             "7": "📹 Short: GRACIAS POR ESTAR",
-            "9": "📹 Short: el tiempo vuela", 
+            "9": "📹 Short: el tiempo vuela",
             "11": "📹 Short: SIGO AQUÍ",
-            "13": "📹 Short: el final de una etapa", 
+            "13": "📹 Short: el final de una etapa",
             "28": "🎬 Largo: EL FUTURO QUE NOS PROMETIERON (PARTE 2)"
         }
     }
@@ -718,28 +659,24 @@ function renderCalendar(mes) {
     const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
     const ideas = mes.ideas || {};
     
-    let html = `<div class="month-title">📅 ${mes.nombre} · ${mes.tema}</div>`;
+    let html = `<div class="month-title">📅 ${mes.nombre}</div>`;
     html += `<div class="calendar-grid">`;
     const diasSemana = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
     diasSemana.forEach(d => html += `<div style="text-align:center;font-weight:bold; font-size:0.7rem; padding:4px;">${d}</div>`);
     
     for (let i = 0; i < startWeekday; i++) html += `<div class="calendar-day empty"></div>`;
     
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    
-    for (let d = 1; d <= daysInMonth; d++) {
-        const isInRange = d >= startDay && d <= endDay && mes.id === 1 ? d >= startDay : true;
-        const isToday = isCurrentMonth && today.getDate() === d && isInRange && mes.id === (currentMonthIndex + 1);
+    for (let d = 1; d <= endDay; d++) {
+        const isInRange = d >= startDay;
+        const isToday = isCurrentMonth && today.getDate() === d && isInRange;
         const idea = ideas[d];
         
-        if (!isInRange && mes.id === 1 && d < startDay) {
-            html += `<div class="calendar-day empty" style="opacity:0.3;">${d}</div>`;
-        } else if (d > endDay && mes.id === 1) {
+        if (!isInRange && d < startDay) {
             html += `<div class="calendar-day empty" style="opacity:0.3;">${d}</div>`;
         } else {
             html += `<div class="calendar-day ${idea ? 'has-idea' : ''} ${isToday ? 'today' : ''}">
                         <strong>${d}</strong>
-                        ${idea ? `<span class="idea-badge">${idea.length > 35 ? idea.substring(0, 32)+'...' : idea}</span>` : ''}
+                        ${idea ? `<span class="idea-badge">${idea.length > 30 ? idea.substring(0, 27)+'...' : idea}</span>` : ''}
                     </div>`;
         }
     }
@@ -756,7 +693,7 @@ function renderPeriodView(monthIndex) {
     mainDiv.innerHTML = `
         <div class="current-activity">
             <i class="fas fa-hourglass-half" style="font-size:1.5rem; color:#E2A468;"></i>
-            <h3 style="margin-top:8px;">${mes.nombre} · ${mes.tema}</h3>
+            <h3 style="margin-top:8px;">MES DE HOY: ${mes.nombre}</h3>
             <p style="font-size:1.1rem; margin-top:8px;">Ahora mismo: ${currentActivity ? currentActivity.actividad : 'Descanso o tiempo libre'}</p>
             <small>${currentActivity ? `desde las ${currentActivity.inicio}` : 'Fuera del horario establecido'}</small>
         </div>
@@ -777,7 +714,7 @@ function renderPeriodView(monthIndex) {
                 <table class="horario-table">
                     <thead><tr><th>Hora</th><th>Actividad</th><th>Duración</th></tr></thead>
                     <tbody>
-                        ${mes.horario.map(row => `<tr><td style="font-weight:500;">${row.hora}</td><td>${row.actividad}</td><td>${row.duracion} min</td></tr>`).join('')}
+                        ${mes.horario.map(row => `<tr><td style="font-weight:500;">${row.hora}</td><td>${row.actividad}</td><td>${row.duracion} min</td>`).join('')}
                     </tbody>
                 </table>
             </div>
@@ -791,7 +728,7 @@ function renderPeriodView(monthIndex) {
         <div class="info-card">
             <div class="card-header"><i class="fab fa-youtube"></i> Calendario de Contenido · Ideas</div>
             ${renderCalendar(mes)}
-            <div style="margin-top:12px; font-size:0.7rem; color:#B8A48A;"><i class="fas fa-lightbulb"></i> Días con ideas: fondo color crema (Shorts días 1,3,5,7,9,11,13,21 · Largo día 28)</div>
+            <div style="margin-top:12px; font-size:0.7rem; color:#B8A48A;"><i class="fas fa-lightbulb"></i> Días con ideas: fondo color crema (Shorts días 1,3,5,7,9,11,13 · Largo día 28)</div>
         </div>
     `;
     
