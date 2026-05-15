@@ -3,49 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>RitmoLab · Flow Personal</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='85' font-size='85' text-anchor='middle' fill='%23E8C9A3'%3E⏰%3C/text%3E%3C/svg%3E">
+    <title>RitmoLab · Logros y Hábitos</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='85' font-size='85' text-anchor='middle' fill='%23E8C9A3'%3E🏆%3C/text%3E%3C/svg%3E">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Nunito:wght@300;400;500;600;700;800&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: linear-gradient(145deg, #FCF9F5 0%, #F5EDE4 100%);
             font-family: 'Inter', 'Nunito', sans-serif;
             color: #2D2A24;
             padding: 28px 24px;
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
         }
-
-        /* Fondo con ondas suaves animadas */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 40%, rgba(232, 200, 162, 0.12) 0%, transparent 50%);
-            animation: slowDrift 40s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        @keyframes slowDrift {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(2%, 1%) rotate(1deg); }
-            66% { transform: translate(-1%, 2%) rotate(-1deg); }
-        }
-
-        /* Partículas flotantes */
         .particle {
             position: fixed;
             background: rgba(216, 184, 148, 0.3);
@@ -54,22 +26,49 @@
             animation: floatParticle linear infinite;
             z-index: 0;
         }
-
         @keyframes floatParticle {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.4; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.3; }
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
-
-        .app-container {
-            max-width: 1500px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+        @keyframes achievementPop {
+            0% { transform: scale(0) rotate(-10deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
         }
-
-        /* Header con glow animado */
+        @keyframes confettiFall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .achievement-toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #2D2A24, #3D3730);
+            color: #F2E8DC;
+            padding: 16px 24px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 1000;
+            animation: achievementPop 0.5s ease-out;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 1px solid #D4BFA8;
+            font-family: 'Caveat', cursive;
+            font-size: 1.1rem;
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            animation: confettiFall 2s ease-out forwards;
+            pointer-events: none;
+            z-index: 999;
+        }
+        .app-container { max-width: 1600px; margin: 0 auto; position: relative; z-index: 1; }
         .hero-header {
             text-align: center;
             margin-bottom: 36px;
@@ -78,15 +77,7 @@
             backdrop-filter: blur(12px);
             border-radius: 80px;
             border: 1px solid rgba(232, 200, 162, 0.4);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(232, 200, 162, 0.2);
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
-
-        .hero-header:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(232, 200, 162, 0.5);
-        }
-
         .hero-header h1 {
             font-family: 'Caveat', cursive;
             font-size: 2.6rem;
@@ -96,49 +87,18 @@
             background-clip: text;
             color: transparent;
             animation: shimmer 3s linear infinite;
-            letter-spacing: 2px;
         }
-
-        @keyframes shimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .hero-header .frase {
-            font-family: 'Caveat', cursive;
-            font-size: 1.2rem;
-            color: #B8A48A;
-            margin-top: 8px;
-            letter-spacing: 1px;
-        }
-
+        @keyframes shimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .live-clock {
-            font-family: 'Inter', monospace;
-            font-size: 1rem;
-            font-weight: 500;
+            font-family: monospace;
             background: linear-gradient(135deg, #2D2A24, #3D3730);
             color: #F2E8DC;
             padding: 8px 20px;
             border-radius: 60px;
             display: inline-block;
             margin-top: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
         }
-
-        .live-clock:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .dashboard {
-            display: flex;
-            gap: 28px;
-            flex-wrap: wrap;
-        }
-
-        /* Sidebar elegante */
+        .dashboard { display: flex; gap: 28px; flex-wrap: wrap; }
         .period-sidebar {
             flex: 0.9;
             min-width: 270px;
@@ -147,142 +107,51 @@
             border-radius: 40px;
             padding: 24px 18px;
             border: 1px solid rgba(232, 200, 162, 0.4);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.04);
             height: fit-content;
             position: sticky;
             top: 24px;
-            transition: all 0.3s ease;
         }
-
-        .period-sidebar:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: rgba(232, 200, 162, 0.6);
-        }
-
         .period-sidebar h2 {
             font-weight: 700;
             font-size: 1.3rem;
             margin-bottom: 24px;
             color: #A4815C;
             font-family: 'Caveat', cursive;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-left: 8px;
             border-left: 4px solid #E2CDB5;
+            padding-left: 16px;
         }
-
-        .period-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-height: 55vh;
-            overflow-y: auto;
-            padding-right: 6px;
-        }
-
-        .period-list::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .period-list::-webkit-scrollbar-track {
-            background: #EFE5DB;
-            border-radius: 10px;
-        }
-
-        .period-list::-webkit-scrollbar-thumb {
-            background: #D4BFA8;
-            border-radius: 10px;
-        }
-
+        .period-list { display: flex; flex-direction: column; gap: 10px; max-height: 55vh; overflow-y: auto; }
         .period-item {
             padding: 14px 18px;
             border-radius: 60px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+            transition: all 0.3s;
             background: #FCF8F2;
             border: 1px solid #EDE1D3;
-            font-size: 0.85rem;
-            color: #5E5343;
             display: flex;
             align-items: center;
             gap: 12px;
-            position: relative;
-            overflow: hidden;
         }
-
-        .period-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(232, 200, 162, 0.3);
-            transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-        }
-
-        .period-item:hover::before {
-            width: 200px;
-            height: 200px;
-        }
-
-        .period-item i, .period-item span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .period-item i { width: 24px; color: #C1A88B; transition: transform 0.3s; }
-        .period-item:hover i { transform: scale(1.1); color: #B88B5C; }
-
-        .period-item.active {
-            background: linear-gradient(135deg, #EBDDCB, #E6D4C0);
-            border-color: #D4BFA8;
-            color: #3E2E1F;
-            font-weight: 600;
-            transform: translateX(6px) scale(1.01);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .period-item:hover:not(.active) {
-            background: #F5EDE3;
-            transform: translateX(3px);
-        }
-
-        /* Main content con glassmorphism */
+        .period-item i { width: 24px; color: #C1A88B; }
+        .period-item.active { background: linear-gradient(135deg, #EBDDCB, #E6D4C0); border-color: #D4BFA8; transform: translateX(6px); }
+        .period-item.locked { opacity: 0.5; filter: grayscale(0.2); cursor: not-allowed; }
         .main-content {
             flex: 3;
             min-width: 380px;
             background: rgba(255, 253, 250, 0.85);
             backdrop-filter: blur(8px);
             border-radius: 48px;
-            border: 1px solid rgba(232, 200, 162, 0.3);
             padding: 32px 36px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
         }
-
-        /* Tarjetas con animaciones */
-        .info-card {
+        .info-card, .calendar-card {
             background: #FFFFFF;
             border-radius: 32px;
             border: 1px solid #EFE5DB;
             padding: 24px 28px;
             margin-bottom: 28px;
-            transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.2);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            transition: all 0.3s;
         }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12);
-            border-color: #E2CDB5;
-        }
-
         .card-header {
             display: flex;
             align-items: center;
@@ -290,448 +159,177 @@
             margin-bottom: 20px;
             font-family: 'Caveat', cursive;
             font-size: 1.5rem;
-            font-weight: 600;
             color: #A4815C;
             border-left: 5px solid #E2CDB5;
             padding-left: 18px;
-            transition: transform 0.2s;
         }
-
-        .info-card:hover .card-header {
-            transform: translateX(3px);
-        }
-
-        .card-header i {
-            font-size: 1.4rem;
-            transition: transform 0.3s;
-        }
-
-        .info-card:hover .card-header i {
-            transform: rotate(5deg) scale(1.05);
-        }
-
-        /* Grid de información */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 16px;
-            margin-top: 8px;
-        }
-
-        .info-badge {
-            background: linear-gradient(135deg, #FEFCF9, #FBF6EF);
-            border-radius: 24px;
-            padding: 16px 20px;
-            border-left: 5px solid #D4BFA8;
-            transition: all 0.3s ease;
-            cursor: default;
-        }
-
-        .info-badge:hover {
-            transform: translateX(6px);
-            background: linear-gradient(135deg, #FEFAF5, #FDF5EC);
-            border-left-color: #C49A6C;
-        }
-
-        .info-badge strong {
-            display: block;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #B29476;
-        }
-
-        .info-badge span {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #4A3F32;
-            margin-top: 8px;
-            display: block;
-        }
-
-        /* Tabla horaria */
-        .schedule-wrapper {
-            overflow-x: auto;
-            border-radius: 24px;
-        }
-
-        .horario-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.85rem;
-        }
-
-        .horario-table th {
-            text-align: left;
-            padding: 16px 14px;
-            background: linear-gradient(135deg, #FAF5EE, #F8F2EA);
-            font-weight: 700;
-            color: #836E53;
-            border-bottom: 2px solid #EFE2D4;
-            font-size: 0.8rem;
-        }
-
-        .horario-table td {
-            padding: 14px 14px;
-            border-bottom: 1px solid #F0E7DE;
-            vertical-align: middle;
-            transition: all 0.2s ease;
-        }
-
-        .horario-table tr {
-            transition: all 0.2s;
-        }
-
-        .horario-table tr:hover {
-            background: #FDF9F4;
-            transform: scale(1.01);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-        }
-
-        /* Donut chart */
-        .donut-wrapper {
-            max-width: 280px;
-            margin: 0 auto;
-            padding: 12px;
-            transition: transform 0.3s;
-        }
-
-        .donut-wrapper:hover {
-            transform: scale(1.02);
-        }
-
-        /* Alerta banner */
-        .alert-banner {
-            background: linear-gradient(135deg, #FFF8F0, #FFF3E8);
-            border-radius: 60px;
-            padding: 14px 22px;
-            margin-bottom: 20px;
+        .habit-item {
             display: flex;
             align-items: center;
-            gap: 14px;
-            border: 1px solid #F0DCC8;
-            font-size: 0.85rem;
-            transition: all 0.3s;
-            cursor: default;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #F0E7DE;
         }
-
-        .alert-banner:hover {
-            transform: scale(1.01);
-            background: linear-gradient(135deg, #FFF9F2, #FFF5EC);
-            border-color: #E2CBB2;
-        }
-
-        .alert-banner i {
-            font-size: 1.3rem;
-            color: #E2A468;
-            animation: softRing 2s ease-in-out infinite;
-        }
-
-        @keyframes softRing {
-            0%, 100% { transform: rotate(0deg); }
-            10%, 30%, 50% { transform: rotate(8deg); }
-            20%, 40% { transform: rotate(-8deg); }
-        }
-
-        /* Actividad actual */
-        .current-activity-card {
-            background: linear-gradient(135deg, #F8F2EA, #F5EDE4);
-            border-radius: 32px;
-            padding: 20px 24px;
-            margin-top: 8px;
-            border: 1px solid #E8DDD0;
-            transition: all 0.3s;
-            animation: pulseGlow 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(216, 184, 148, 0.2); }
-            50% { box-shadow: 0 0 0 8px rgba(216, 184, 148, 0); }
-        }
-
-        .current-activity-card:hover {
-            transform: scale(1.01);
-            background: linear-gradient(135deg, #F9F3EC, #F6EFE6);
-        }
-
-        /* Footer */
-        footer {
+        .habit-check { width: 22px; height: 22px; accent-color: #D4BFA8; cursor: pointer; }
+        .habit-label { flex: 1; font-size: 0.95rem; }
+        .habit-time { font-size: 0.75rem; color: #B8A48A; }
+        .horario-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .horario-table th, .horario-table td { padding: 12px; border-bottom: 1px solid #F0E7DE; text-align: left; }
+        .donut-wrapper { max-width: 260px; margin: 0 auto; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 16px; }
+        .calendar-day {
+            background: #FCF8F2;
+            border-radius: 16px;
+            padding: 12px 8px;
             text-align: center;
-            margin-top: 48px;
             font-size: 0.8rem;
-            color: #CCBFAD;
-            font-family: 'Caveat', cursive;
-            padding: 20px;
-            border-top: 1px solid rgba(232, 200, 162, 0.3);
+            transition: all 0.2s;
+            border: 1px solid #EFE5DB;
+            cursor: pointer;
+            position: relative;
         }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            body { padding: 16px; }
-            .period-list { flex-direction: row; flex-wrap: wrap; gap: 8px; max-height: none; }
-            .period-item { padding: 10px 16px; font-size: 0.7rem; }
-            .period-sidebar { position: static; }
-            .main-content { padding: 20px; }
-            .info-grid { grid-template-columns: 1fr; }
-            .hero-header h1 { font-size: 2rem; }
+        .calendar-day:hover { background: #F5EDE3; transform: scale(1.02); }
+        .calendar-day.has-idea { background: #EBDDCB; border-color: #D4BFA8; }
+        .calendar-day.today { background: #D4BFA8; color: white; }
+        .idea-badge { font-size: 0.7rem; display: block; margin-top: 4px; color: #A4815C; }
+        .idea-input {
+            width: 100%;
+            margin-top: 8px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            border: 1px solid #EFE5DB;
+            font-size: 0.7rem;
         }
-
-        /* Loading animation */
-        .loading-spinner {
-            text-align: center;
-            padding: 80px 20px;
+        .btn-cozy {
+            background: #F3EAE1;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 12px;
         }
-
-        .loading-spinner i {
-            font-size: 3rem;
-            color: #D4BFA8;
-            animation: spin 1s linear infinite;
+        .btn-cozy:hover { background: #E8DACA; transform: scale(0.97); }
+        .history-list { max-height: 200px; overflow-y: auto; margin-top: 16px; }
+        .history-item { padding: 10px; border-bottom: 1px solid #EFE5DB; font-size: 0.8rem; display: flex; justify-content: space-between; }
+        .notification-badge {
+            background: #FFF3E8;
+            border-radius: 60px;
+            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        footer { text-align: center; margin-top: 48px; color: #CCBFAD; font-family: 'Caveat', cursive; padding: 20px; }
+        @media (max-width: 900px) { .period-list { flex-direction: row; flex-wrap: wrap; } .main-content { padding: 20px; } }
     </style>
 </head>
 <body>
 <div class="app-container">
     <div class="hero-header">
-        <h1><i class="fas fa-waveform"></i> RitmoLab</h1>
+        <h1><i class="fas fa-trophy"></i> RitmoLab · Logros y Hábitos</h1>
         <div class="frase">ritmo, no presión · constancia, no intensidad</div>
         <div><span class="live-clock" id="liveClock"></span></div>
     </div>
-    
     <div class="dashboard">
         <div class="period-sidebar">
-            <h2><i class="fas fa-calendar-alt"></i> Períodos · 12 Meses</h2>
+            <h2><i class="fas fa-calendar-alt"></i> Meses · Logros</h2>
             <div class="period-list" id="periodList"></div>
-            <div class="alert-banner">
-                <i class="fas fa-bell"></i>
-                <span>🔔 Recordatorios activos · sonido fuerte</span>
-            </div>
+            <div class="notification-badge" style="margin-top: 20px; width:100%; justify-content:center;"><i class="fas fa-bell"></i> Notificaciones activas · sonido fuerte</div>
+            <div id="historyList" class="history-list"></div>
         </div>
-        
-        <div class="main-content" id="mainContent">
-            <div class="loading-spinner">
-                <i class="fas fa-spinner"></i>
-                <p style="margin-top: 16px; color: #B8A48A;">Cargando tu flow...</p>
-            </div>
-        </div>
+        <div class="main-content" id="mainContent"><div style="text-align:center;padding:80px"><i class="fas fa-spinner fa-pulse"></i> Cargando...</div></div>
     </div>
-    <footer>⏰ Sistema de alertas constantes · Sincronizado con tu horario real</footer>
+    <footer>🏆 Cada hábito completado genera notificación · Los meses se desbloquean con el tiempo real</footer>
 </div>
 
 <script>
-    // Crear partículas flotantes
-    function createParticles() {
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            const size = Math.random() * 4 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = Math.random() * 15 + 10 + 's';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            document.body.appendChild(particle);
-        }
-    }
-    createParticles();
-
-    // DATOS DEL HORARIO
-    const PERIODOS = [
-        "15-31 MAY 2026 (Nocturno · 11am)",
-        "1-30 JUN 2026 (Estándar · 8am)",
-        "1-31 JUL 2026 (Estándar · 8am)",
-        "1-31 AGO 2026 (Estándar · 8am)",
-        "1-30 SEP 2026 (Estándar · 8am)",
-        "1-31 OCT 2026 (Estándar · 8am)",
-        "1-30 NOV 2026 (Estándar · 8am)",
-        "1-31 DIC 2026 (Estándar · 8am)",
-        "1-31 ENE 2027 (Estándar · 8am)",
-        "1-28 FEB 2027 (Estándar · 8am)",
-        "1-31 MAR 2027 (Estándar · 8am)",
-        "1-30 ABR 2027 (Estándar · 8am)"
+    // ==================== CONFIGURACIÓN ====================
+    const START_DATE = new Date(2026, 4, 15); // 15 mayo 2026
+    const MESES = [
+        { nombre: "Mayo 2026 (15-31)", fechaInicio: new Date(2026, 4, 15), fechaFin: new Date(2026, 4, 31), unlocked: false, ideas: {} },
+        { nombre: "Junio 2026", fechaInicio: new Date(2026, 5, 1), fechaFin: new Date(2026, 5, 30), unlocked: false, ideas: {} },
+        { nombre: "Julio 2026", fechaInicio: new Date(2026, 6, 1), fechaFin: new Date(2026, 6, 31), unlocked: false, ideas: {} },
+        { nombre: "Agosto 2026", fechaInicio: new Date(2026, 7, 1), fechaFin: new Date(2026, 7, 31), unlocked: false, ideas: {} },
+        { nombre: "Septiembre 2026", fechaInicio: new Date(2026, 8, 1), fechaFin: new Date(2026, 8, 30), unlocked: false, ideas: {} },
+        { nombre: "Octubre 2026", fechaInicio: new Date(2026, 9, 1), fechaFin: new Date(2026, 9, 31), unlocked: false, ideas: {} },
+        { nombre: "Noviembre 2026", fechaInicio: new Date(2026, 10, 1), fechaFin: new Date(2026, 10, 30), unlocked: false, ideas: {} },
+        { nombre: "Diciembre 2026", fechaInicio: new Date(2026, 11, 1), fechaFin: new Date(2026, 11, 31), unlocked: false, ideas: {} },
+        { nombre: "Enero 2027", fechaInicio: new Date(2027, 0, 1), fechaFin: new Date(2027, 0, 31), unlocked: false, ideas: {} },
+        { nombre: "Febrero 2027", fechaInicio: new Date(2027, 1, 1), fechaFin: new Date(2027, 1, 28), unlocked: false, ideas: {} },
+        { nombre: "Marzo 2027", fechaInicio: new Date(2027, 2, 1), fechaFin: new Date(2027, 2, 31), unlocked: false, ideas: {} },
+        { nombre: "Abril 2027", fechaInicio: new Date(2027, 3, 1), fechaFin: new Date(2027, 3, 30), unlocked: false, ideas: {} }
     ];
     
-    const HORARIO_NOCTURNO = [
-        { hora: "11:00", actividad: "Levantarse + Higiene + Lavar dientes", duracion: 15, notas: "Despertar nocturno" },
-        { hora: "11:15", actividad: "Tiempo libre (despertar bien)", duracion: 15, notas: "" },
-        { hora: "11:30", actividad: "Desayuno", duracion: 30, notas: "" },
-        { hora: "12:00", actividad: "Estudio de cocina", duracion: 90, notas: "" },
-        { hora: "13:30", actividad: "Tiempo libre", duracion: 30, notas: "" },
-        { hora: "14:00", actividad: "Almuerzo", duracion: 30, notas: "" },
-        { hora: "14:30", actividad: "Tiempo libre (digestión)", duracion: 30, notas: "" },
-        { hora: "15:00", actividad: "BLENDER (L, Mi, V)", duracion: 90, notas: "3D / Edición" },
-        { hora: "16:30", actividad: "Tiempo libre", duracion: 30, notas: "" },
-        { hora: "17:00", actividad: "EJERCICIO (Mar, Jue, Sáb)", duracion: 60, notas: "Rutina" },
-        { hora: "18:00", actividad: "Tiempo libre / ducha", duracion: 30, notas: "" },
-        { hora: "18:30", actividad: "BLENDER (Mar, Jue, Sáb, Dom)", duracion: 90, notas: "" },
-        { hora: "20:00", actividad: "Once", duracion: 30, notas: "" },
-        { hora: "20:30", actividad: "Tiempo libre", duracion: 90, notas: "" },
-        { hora: "22:00", actividad: "Blender opcional / edición", duracion: 90, notas: "" },
-        { hora: "23:30", actividad: "Preparar dormir + Lavar dientes", duracion: 15, notas: "" },
-        { hora: "23:45", actividad: "Leer o relajarse", duracion: 15, notas: "" },
-        { hora: "00:00", actividad: "Dormir", duracion: 660, notas: "11h de sueño" }
+    // Hábitos diarios con horarios específicos (comer 1 hora)
+    const HABITOS = [
+        { id: "levantarse", nombre: "🌅 Levantarse a tiempo", hora: "08:00", completado: false, notificado: false },
+        { id: "desayuno", nombre: "🍳 Desayuno saludable", hora: "08:30", completado: false, notificado: false },
+        { id: "estudio", nombre: "📚 Estudio de cocina", hora: "09:00", completado: false, notificado: false },
+        { id: "blender", nombre: "🎨 Práctica en Blender", hora: "11:00", completado: false, notificado: false },
+        { id: "almuerzo", nombre: "🍽️ Almuerzo (1 hora)", hora: "13:00", completado: false, notificado: false, duracion: 60 },
+        { id: "ejercicio", nombre: "💪 Ejercicio diario", hora: "17:00", completado: false, notificado: false },
+        { id: "once", nombre: "☕ Once / Merienda", hora: "18:00", completado: false, notificado: false },
+        { id: "sin_pantallas", nombre: "📵 Sin pantallas 30min antes", hora: "21:30", completado: false, notificado: false },
+        { id: "dormir", nombre: "😴 Dormir a tiempo", hora: "22:00", completado: false, notificado: false }
     ];
     
+    // Horarios estándar para tabla
     const HORARIO_ESTANDAR = [
-        { hora: "08:00", actividad: "Levantarse + Higiene + Lavar dientes", duracion: 15, notas: "" },
-        { hora: "08:15", actividad: "Tiempo libre (despertar bien)", duracion: 15, notas: "" },
+        { hora: "08:00", actividad: "Levantarse + Higiene", duracion: 30, notas: "" },
         { hora: "08:30", actividad: "Desayuno", duracion: 30, notas: "" },
         { hora: "09:00", actividad: "Estudio de cocina", duracion: 90, notas: "" },
         { hora: "10:30", actividad: "Tiempo libre", duracion: 30, notas: "" },
-        { hora: "11:00", actividad: "BLOCKER A: BLENDER (Lun, Vie)", duracion: 90, notas: "Enfoque 3D" },
+        { hora: "11:00", actividad: "Blender", duracion: 90, notas: "" },
         { hora: "12:30", actividad: "Tiempo libre", duracion: 30, notas: "" },
-        { hora: "13:00", actividad: "Almuerzo", duracion: 60, notas: "" },
-        { hora: "14:00", actividad: "Tiempo libre / siesta corta", duracion: 60, notas: "" },
-        { hora: "15:00", actividad: "BLOCKER B: BLENDER (Mié, Dom)", duracion: 90, notas: "" },
+        { hora: "13:00", actividad: "Almuerzo (1 hora)", duracion: 60, notas: "Comer tranquilo" },
+        { hora: "14:00", actividad: "Tiempo libre", duracion: 60, notas: "" },
+        { hora: "15:00", actividad: "Blender / Edición", duracion: 90, notas: "" },
         { hora: "16:30", actividad: "Tiempo libre", duracion: 30, notas: "" },
-        { hora: "17:00", actividad: "EJERCICIO (Mar, Jue)", duracion: 30, notas: "Cardio/Fuerza" },
-        { hora: "17:30", actividad: "Ducha y tiempo libre", duracion: 30, notas: "" },
+        { hora: "17:00", actividad: "Ejercicio", duracion: 30, notas: "" },
+        { hora: "17:30", actividad: "Ducha", duracion: 30, notas: "" },
         { hora: "18:00", actividad: "Once", duracion: 30, notas: "" },
-        { hora: "18:30", actividad: "Tiempo libre / edición ligera", duracion: 90, notas: "" },
-        { hora: "20:00", actividad: "Tiempo libre sin pantallas", duracion: 90, notas: "Lectura / descanso" },
-        { hora: "21:30", actividad: "Preparar dormir + Lavar dientes", duracion: 15, notas: "" },
-        { hora: "21:45", actividad: "Leer o relajarse en cama", duracion: 15, notas: "" },
-        { hora: "22:00", actividad: "Dormir", duracion: 600, notas: "10h reparadoras" }
+        { hora: "18:30", actividad: "Tiempo libre", duracion: 90, notas: "" },
+        { hora: "20:00", actividad: "Sin pantallas", duracion: 90, notas: "" },
+        { hora: "21:30", actividad: "Preparar dormir", duracion: 30, notas: "" },
+        { hora: "22:00", actividad: "Dormir", duracion: 600, notas: "" }
     ];
     
-    let currentPeriod = PERIODOS[0];
+    // Variables globales
+    let currentMonthIndex = 0;
     let chartInstance = null;
-    let alarmCheckerInterval = null;
-    let activityInterval = null;
     let audioCtx = null;
+    let habitosData = JSON.parse(localStorage.getItem("RitmoLab_habitos")) || HABITOS.map(h => ({ ...h, completado: false, notificado: false }));
+    let mesesData = JSON.parse(localStorage.getItem("RitmoLab_meses")) || MESES;
+    let historyEntries = JSON.parse(localStorage.getItem("RitmoLab_history")) || [];
+    let lastCheckDate = localStorage.getItem("RitmoLab_lastDate") || null;
     
-    function getHorario(periodName) {
-        return periodName.includes("Nocturno") ? [...HORARIO_NOCTURNO] : [...HORARIO_ESTANDAR];
+    function saveAll() {
+        localStorage.setItem("RitmoLab_habitos", JSON.stringify(habitosData));
+        localStorage.setItem("RitmoLab_meses", JSON.stringify(mesesData));
+        localStorage.setItem("RitmoLab_history", JSON.stringify(historyEntries));
     }
     
-    function getCurrentActivity(horario) {
-        const now = new Date();
-        const currentMinutes = now.getHours() * 60 + now.getMinutes();
-        for (let row of horario) {
-            let [h, m] = row.hora.split(":").map(Number);
-            let activityStart = h * 60 + m;
-            let duration = parseInt(row.duracion) || 0;
-            let activityEnd = activityStart + duration;
-            if (currentMinutes >= activityStart && currentMinutes < activityEnd) {
-                return { actividad: row.actividad, inicio: row.hora, duracion: row.duracion };
-            }
-        }
-        return null;
+    // Formato fecha chilena
+    function formatFechaChilena(date) {
+        return `${date.getDate().toString().padStart(2,'0')}/${(date.getMonth()+1).toString().padStart(2,'0')}/${date.getFullYear()}`;
     }
     
-    function renderDonut(rows) {
-        const canvas = document.getElementById('donutChart');
-        if (!canvas) return;
-        const ctx = canvas.getContext('2d');
-        let activitySum = new Map();
-        rows.forEach(row => {
-            let act = row.actividad;
-            let dur = parseInt(row.duracion) || 0;
-            activitySum.set(act, (activitySum.get(act) || 0) + dur);
-        });
-        let labels = [], data = [], bgColors = [];
-        const colorMap = {
-            "Levantarse + Higiene + Lavar dientes": "#E8D5CC", "Desayuno": "#F5E8C7", "Estudio de cocina": "#C7D9C5",
-            "BLENDER (L, Mi, V)": "#B8D4E3", "BLOCKER A: BLENDER (Lun, Vie)": "#B8D4E3", "BLOCKER B: BLENDER (Mié, Dom)": "#B8D4E3",
-            "BLENDER (Mar, Jue, Sáb, Dom)": "#B8D4E3", "EJERCICIO (Mar, Jue, Sáb)": "#E2C2B3", "EJERCICIO (Mar, Jue)": "#E2C2B3",
-            "Tiempo libre": "#D6D6D6", "Almuerzo": "#F0D9B5", "Once": "#D9C5B3", "Preparar dormir + Lavar dientes": "#C5D6D9",
-            "Dormir": "#B3C4C4", "Leer o relajarse": "#E2CFC0", "Tiempo libre sin pantallas": "#D6D6D6"
-        };
-        for (let [act, mins] of activitySum) {
-            if (mins / 1440 < 0.01) continue;
-            labels.push(act.length > 25 ? act.slice(0,22)+"..." : act);
-            data.push(mins);
-            bgColors.push(colorMap[act] || `hsl(${(act.length * 43) % 360}, 65%, 78%)`);
-        }
-        if (chartInstance) chartInstance.destroy();
-        chartInstance = new Chart(ctx, {
-            type: 'doughnut',
-            data: { labels, datasets: [{ data, backgroundColor: bgColors, cutout: '70%', borderWidth: 0 }] },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.label}: ${(ctx.raw/60).toFixed(1)}h (${((ctx.raw/1440)*100).toFixed(1)}%)` } } } }
-        });
-    }
-    
-    function updateCurrentActivity(horario) {
-        const current = getCurrentActivity(horario);
-        const displayDiv = document.getElementById('currentActivityDisplay');
-        if (!displayDiv) return;
-        if (current) {
-            displayDiv.innerHTML = `<i class="fas fa-play-circle" style="color:#E2A468; margin-right: 12px;"></i> <strong>${current.actividad}</strong> · de ${current.inicio} (${current.duracion} min)`;
-        } else {
-            displayDiv.innerHTML = `<i class="fas fa-moon" style="margin-right: 12px;"></i> Descanso o fuera de horario · tiempo libre ✨`;
-        }
-    }
-    
-    function renderPeriodView(period) {
-        const horario = getHorario(period);
-        const isNocturno = period.includes("Nocturno");
-        
-        const mainDiv = document.getElementById('mainContent');
-        mainDiv.innerHTML = `
-            <div class="info-card">
-                <div class="card-header"><i class="fas fa-info-circle"></i> Resumen del período</div>
-                <div class="info-grid">
-                    <div class="info-badge"><strong>📅 Período activo</strong><span>${period}</span></div>
-                    <div class="info-badge"><strong>💪 Rutina ejercicio</strong><span>${isNocturno ? "Mar / Jue / Sáb 17:00" : "Mar / Jue 17:00 + Sáb 10:00"}</span></div>
-                    <div class="info-badge"><strong>🖥️ Blender / Edición</strong><span>${isNocturno ? "L/Mi/V 15h · Ma/Ju/S/D 18:30h" : "Lun/Vie 11h (A) · Mié/Dom 15h (B)"}</span></div>
-                    <div class="info-badge"><strong>😴 Horas de sueño</strong><span>${isNocturno ? "~11 horas" : "~10 horas"}</span></div>
-                </div>
-            </div>
-            
-            <div class="info-card">
-                <div class="card-header"><i class="fas fa-table-list"></i> Horario Diario · ${isNocturno ? "Horario Nocturno" : "Horario Estándar"}</div>
-                <div class="schedule-wrapper">
-                    <table class="horario-table">
-                        <thead><tr><th>Hora</th><th>Actividad</th><th>Duración</th><th>Notas</th></thead>
-                        <tbody id="scheduleBody"></tbody>
-                    </table>
-                </div>
-            </div>
-            
-            <div class="info-card">
-                <div class="card-header"><i class="fas fa-chart-pie"></i> Distribución del día (24h)</div>
-                <div class="donut-wrapper"><canvas id="donutChart" width="240" height="240"></canvas></div>
-            </div>
-            
-            <div class="info-card">
-                <div class="card-header"><i class="fas fa-hourglass-half"></i> 🕐 Ahora mismo en tu rutina</div>
-                <div class="current-activity-card" id="currentActivityDisplay"></div>
-            </div>
-        `;
-        
-        const tbody = document.getElementById('scheduleBody');
-        tbody.innerHTML = horario.map(row => `
-            <tr>
-                <td style="font-weight:500;">${row.hora}</td>
-                <td>${row.actividad}</td>
-                <td>${row.duracion} min</td>
-                <td style="color:#988F82;">${row.notas || "—"}</td>
-            </tr>
-        `).join('');
-        
-        renderDonut(horario);
-        updateCurrentActivity(horario);
-        
-        if (activityInterval) clearInterval(activityInterval);
-        activityInterval = setInterval(() => updateCurrentActivity(horario), 60000);
-    }
-    
+    // Sonido fuerte
     function playLoudBeep() {
         try {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioCtx.createOscillator();
-            const gainNode = audioCtx.createGain();
-            oscillator.connect(gainNode);
-            gainNode.connect(audioCtx.destination);
-            oscillator.type = 'square';
-            oscillator.frequency.value = 880;
-            gainNode.gain.value = 0.4;
-            oscillator.start();
-            gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.6);
-            oscillator.stop(audioCtx.currentTime + 0.6);
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.type = 'square';
+            osc.frequency.value = 880;
+            gain.gain.value = 0.4;
+            osc.start();
+            gain.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.6);
+            osc.stop(audioCtx.currentTime + 0.6);
             audioCtx.resume();
         } catch(e) { console.warn("Audio no disponible"); }
     }
@@ -739,63 +337,269 @@
     function sendNotification(title, body) {
         playLoudBeep();
         if (Notification.permission === 'granted') {
-            new Notification(title, { body: body, icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='85' font-size='85' text-anchor='middle' fill='%23D4A574'%3E⏰%3C/text%3E%3C/svg%3E" });
+            new Notification(title, { body, icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='85' font-size='85' text-anchor='middle' fill='%23E8C9A3'%3E🏆%3C/text%3E%3C/svg%3E" });
         } else if (Notification.permission !== 'denied') {
             Notification.requestPermission();
         }
     }
     
-    function startAlarmSystem(horarioActual) {
-        if (alarmCheckerInterval) clearInterval(alarmCheckerInterval);
-        alarmCheckerInterval = setInterval(() => {
-            const now = new Date();
-            const currentTime = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0');
-            const actividadAhora = horarioActual.find(row => row.hora === currentTime);
-            if (actividadAhora) {
-                sendNotification(`🔔 RitmoLab · ${actividadAhora.actividad}`, `⏰ Es hora de: ${actividadAhora.actividad}. ¡Mantén el ritmo!`);
-            }
-        }, 60000);
+    // Animación de confeti
+    function showConfetti() {
+        for (let i = 0; i < 50; i++) {
+            const conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * window.innerWidth + 'px';
+            conf.style.top = '-20px';
+            conf.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+            conf.style.width = Math.random() * 10 + 5 + 'px';
+            conf.style.height = conf.style.width;
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 2000);
+        }
     }
     
-    function refreshAlarmsForPeriod(period) {
-        const horario = getHorario(period);
-        startAlarmSystem(horario);
+    function showAchievement(message) {
+        const toast = document.createElement('div');
+        toast.className = 'achievement-toast';
+        toast.innerHTML = `<i class="fas fa-trophy" style="font-size:1.5rem;"></i> ${message}`;
+        document.body.appendChild(toast);
+        showConfetti();
+        setTimeout(() => toast.remove(), 4000);
+    }
+    
+    // Verificar desbloqueo de meses basado en tiempo real
+    function checkMonthUnlocks() {
+        const now = new Date();
+        let anyUnlocked = false;
+        mesesData.forEach((mes, idx) => {
+            if (!mes.unlocked && now >= mes.fechaInicio) {
+                mes.unlocked = true;
+                anyUnlocked = true;
+                const fechaChilena = formatFechaChilena(mes.fechaInicio);
+                historyEntries.unshift({ fecha: new Date().toISOString(), tipo: "mes", mensaje: `🎉 Mes "${mes.nombre}" desbloqueado el ${fechaChilena}` });
+                showAchievement(`✨ ¡Mes ${mes.nombre} desbloqueado! ✨`);
+                sendNotification("🏆 Nuevo Logro Desbloqueado", `Has desbloqueado ${mes.nombre}. ¡Sigue así!`);
+            }
+        });
+        if (anyUnlocked) {
+            saveAll();
+            buildSidebar();
+            if (mesesData[currentMonthIndex]?.unlocked) renderPeriodView(currentMonthIndex);
+            else {
+                const firstUnlocked = mesesData.findIndex(m => m.unlocked);
+                if (firstUnlocked !== -1) { currentMonthIndex = firstUnlocked; renderPeriodView(currentMonthIndex); buildSidebar(); }
+            }
+        }
+    }
+    
+    // Verificar hábitos cada minuto (notificaciones)
+    function checkHabitReminders() {
+        const now = new Date();
+        const currentTime = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0');
+        habitosData.forEach(habito => {
+            if (!habito.notificado && habito.hora === currentTime && !habito.completado) {
+                habito.notificado = true;
+                sendNotification(`⏰ Recordatorio: ${habito.nombre}`, `Es hora de ${habito.nombre.toLowerCase()}. ¡Mantén el ritmo!`);
+                playLoudBeep();
+            }
+            // Reset notificación al día siguiente (se resetea a medianoche)
+        });
+        saveAll();
+    }
+    
+    // Reset diario de hábitos (a medianoche)
+    function resetDailyHabits() {
+        const today = new Date().toDateString();
+        if (lastCheckDate !== today) {
+            habitosData.forEach(h => { h.completado = false; h.notificado = false; });
+            lastCheckDate = today;
+            localStorage.setItem("RitmoLab_lastDate", today);
+            saveAll();
+            if (mesesData[currentMonthIndex]?.unlocked) renderPeriodView(currentMonthIndex);
+        }
+    }
+    
+    // Marcar hábito como completado
+    function toggleHabit(habitId, checked) {
+        const habito = habitosData.find(h => h.id === habitId);
+        if (habito) {
+            habito.completado = checked;
+            if (checked) {
+                sendNotification(`✅ Hábito completado: ${habito.nombre}`, `¡Buen trabajo! Has completado ${habito.nombre}.`);
+                playLoudBeep();
+                // Registrar en historial (1 día, 1 semana, 1 mes)
+                const now = new Date();
+                const fechaStr = formatFechaChilena(now);
+                historyEntries.unshift({ fecha: now.toISOString(), tipo: "habito", mensaje: `✅ Completaste "${habito.nombre}" el ${fechaStr} a las ${habito.hora}` });
+                if (historyEntries.length > 50) historyEntries.pop();
+                saveAll();
+                renderHistoryList();
+            }
+            saveAll();
+            renderHabitsList();
+        }
+    }
+    
+    // Renderizar lista de hábitos
+    function renderHabitsList() {
+        const container = document.getElementById('habitsContainer');
+        if (!container) return;
+        const now = new Date();
+        const currentTime = now.getHours() * 60 + now.getMinutes();
+        container.innerHTML = habitosData.map(h => {
+            const [hour, minute] = h.hora.split(':').map(Number);
+            const habitTimeMinutes = hour * 60 + minute;
+            const isPast = habitTimeMinutes < currentTime;
+            return `
+                <div class="habit-item">
+                    <input type="checkbox" class="habit-check" data-id="${h.id}" ${h.completado ? 'checked' : ''} ${isPast && !h.completado ? 'style="accent-color:#E2A468;"' : ''}>
+                    <span class="habit-label">${h.nombre}</span>
+                    <span class="habit-time">${h.hora} ${h.duracion ? `(${h.duracion} min)` : ''}</span>
+                </div>
+            `;
+        }).join('');
+        document.querySelectorAll('.habit-check').forEach(cb => {
+            cb.addEventListener('change', (e) => toggleHabit(cb.dataset.id, cb.checked));
+        });
+    }
+    
+    // Calendario mensual editable
+    function renderCalendar(monthIndex) {
+        const container = document.getElementById('monthlyCalendar');
+        if (!container) return;
+        const mes = mesesData[monthIndex];
+        if (!mes || !mes.unlocked) { container.innerHTML = '<div style="text-align:center;padding:20px;">🔒 Completa el mes anterior para desbloquear este calendario</div>'; return; }
+        const year = mes.fechaInicio.getFullYear();
+        const month = mes.fechaInicio.getMonth();
+        const firstDay = new Date(year, month, mes.fechaInicio.getDate());
+        const startDay = firstDay.getDay();
+        const daysInMonth = mes.fechaFin.getDate();
+        const today = new Date();
+        const isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+        
+        let calendarHtml = `<div style="text-align:center; margin-bottom:12px;"><strong>${mes.nombre}</strong></div><div class="calendar-grid">`;
+        const diasSemana = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
+        diasSemana.forEach(d => calendarHtml += `<div style="text-align:center;font-weight:bold;">${d}</div>`);
+        for (let i = 0; i < startDay; i++) calendarHtml += `<div></div>`;
+        for (let d = mes.fechaInicio.getDate(); d <= daysInMonth; d++) {
+            const isToday = isCurrentMonth && today.getDate() === d;
+            const idea = mes.ideas[d] || '';
+            calendarHtml += `<div class="calendar-day ${idea ? 'has-idea' : ''} ${isToday ? 'today' : ''}" data-day="${d}">
+                                <strong>${d}</strong>
+                                ${idea ? `<span class="idea-badge"><i class="fas fa-lightbulb"></i> ${idea.substring(0, 15)}${idea.length>15?'...':''}</span>` : ''}
+                                <input type="text" class="idea-input" placeholder="Añadir idea..." value="${escapeHtml(idea)}" data-day="${d}">
+                            </div>`;
+        }
+        calendarHtml += `</div><button class="btn-cozy" id="saveIdeasBtn"><i class="fas fa-save"></i> Guardar ideas del mes</button>`;
+        container.innerHTML = calendarHtml;
+        
+        document.querySelectorAll('.idea-input').forEach(inp => {
+            inp.addEventListener('change', (e) => {
+                const day = parseInt(inp.dataset.day);
+                mes.ideas[day] = inp.value;
+                saveAll();
+            });
+        });
+        document.getElementById('saveIdeasBtn')?.addEventListener('click', () => {
+            saveAll();
+            showAchievement(`📝 Ideas de ${mes.nombre} guardadas`);
+        });
+    }
+    
+    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+    
+    // Donut chart
+    function renderDonut() {
+        const canvas = document.getElementById('donutChart');
+        if (!canvas) return;
+        const completados = habitosData.filter(h => h.completado).length;
+        const total = habitosData.length;
+        const pending = total - completados;
+        if (chartInstance) chartInstance.destroy();
+        const ctx = canvas.getContext('2d');
+        chartInstance = new Chart(ctx, {
+            type: 'doughnut',
+            data: { labels: ['Hábitos Completados', 'Pendientes'], datasets: [{ data: [completados, pending], backgroundColor: ['#D4BFA8', '#EFE5DB'], cutout: '65%', borderWidth: 0 }] },
+            options: { plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw} de ${total}` } } }, responsive: true }
+        });
+    }
+    
+    function renderPeriodView(monthIndex) {
+        const mes = mesesData[monthIndex];
+        if (!mes) return;
+        const isNocturno = mes.nombre.includes("Mayo");
+        const horario = isNocturno ? HORARIO_ESTANDAR.map(h => ({ ...h, hora: (parseInt(h.hora)+3)+":00" })) : HORARIO_ESTANDAR;
+        const mainDiv = document.getElementById('mainContent');
+        mainDiv.innerHTML = `
+            <div class="info-card"><div class="card-header"><i class="fas fa-info-circle"></i> Resumen · ${mes.nombre}</div>
+                <div class="info-grid"><div class="info-badge"><strong>📅 Período</strong><span>${mes.fechaInicio.toLocaleDateString('es-CL')} - ${mes.fechaFin.toLocaleDateString('es-CL')}</span></div>
+                <div class="info-badge"><strong>🏆 Estado</strong><span>${mes.unlocked ? '✅ Desbloqueado' : '🔒 Bloqueado'}</span></div></div>
+            </div>
+            <div class="info-card"><div class="card-header"><i class="fas fa-list-check"></i> Hábitos Diarios · Recordatorios</div>
+                <div id="habitsContainer"></div><div class="donut-wrapper"><canvas id="donutChart" width="200" height="200"></canvas></div>
+            </div>
+            <div class="info-card"><div class="card-header"><i class="fas fa-table-list"></i> Horario del Día</div>
+                <div class="schedule-wrapper"><table class="horario-table"><thead><tr><th>Hora</th><th>Actividad</th><th>Duración</th></tr></thead><tbody>
+                ${horario.map(row => `<tr><td>${row.hora}</td><td>${row.actividad}</td><td>${row.duracion} min</td></tr>`).join('')}</tbody></table></div>
+            </div>
+            <div class="calendar-card"><div class="card-header"><i class="fas fa-calendar-alt"></i> Calendario Mensual · Ideas</div>
+                <div id="monthlyCalendar"></div>
+            </div>
+        `;
+        renderHabitsList();
+        renderDonut();
+        renderCalendar(monthIndex);
+    }
+    
+    function renderHistoryList() {
+        const container = document.getElementById('historyList');
+        if (!container) return;
+        container.innerHTML = historyEntries.slice(0, 20).map(entry => `
+            <div class="history-item"><span>${new Date(entry.fecha).toLocaleString('es-CL')}</span><span>${entry.mensaje}</span></div>
+        `).join('');
     }
     
     function buildSidebar() {
         const container = document.getElementById('periodList');
         container.innerHTML = '';
-        PERIODOS.forEach(p => {
+        mesesData.forEach((mes, idx) => {
             const div = document.createElement('div');
-            div.className = `period-item ${p === currentPeriod ? 'active' : ''}`;
-            div.innerHTML = `<i class="fas fa-${p.includes('Nocturno') ? 'moon' : 'sun'}"></i><span>${p}</span>`;
-            div.addEventListener('click', () => {
-                currentPeriod = p;
-                buildSidebar();
-                renderPeriodView(p);
-                refreshAlarmsForPeriod(p);
-            });
+            div.className = `period-item ${idx === currentMonthIndex ? 'active' : ''} ${!mes.unlocked ? 'locked' : ''}`;
+            div.innerHTML = `<i class="fas ${mes.unlocked ? 'fa-unlock-alt' : 'fa-lock'}"></i><span>${mes.nombre}</span>`;
+            if (mes.unlocked) {
+                div.addEventListener('click', () => { currentMonthIndex = idx; buildSidebar(); renderPeriodView(idx); });
+            }
             container.appendChild(div);
         });
     }
     
     function updateClock() {
         const clockEl = document.getElementById('liveClock');
-        if (clockEl) {
-            const now = new Date();
-            clockEl.innerHTML = now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-        }
+        if (clockEl) clockEl.innerHTML = new Date().toLocaleTimeString('es-CL');
         requestAnimationFrame(() => setTimeout(updateClock, 1000));
     }
     
+    // Inicialización
     function init() {
+        checkMonthUnlocks();
         buildSidebar();
-        renderPeriodView(currentPeriod);
-        refreshAlarmsForPeriod(currentPeriod);
+        const firstUnlocked = mesesData.findIndex(m => m.unlocked);
+        if (firstUnlocked !== -1) { currentMonthIndex = firstUnlocked; renderPeriodView(firstUnlocked); }
+        else renderPeriodView(0);
+        renderHistoryList();
         updateClock();
+        setInterval(() => { checkMonthUnlocks(); checkHabitReminders(); resetDailyHabits(); }, 60000);
         if (Notification.permission === 'default') Notification.requestPermission();
+        // Crear partículas
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div'); p.className = 'particle';
+            p.style.width = p.style.height = Math.random() * 5 + 2 + 'px';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = Math.random() * 15 + 10 + 's';
+            p.style.animationDelay = Math.random() * 20 + 's';
+            document.body.appendChild(p);
+        }
     }
-    
     init();
 </script>
 </body>
