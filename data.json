@@ -1,0 +1,94 @@
+{
+  "version": "2026-2027",
+  "lastUpdated": "2026-05-15",
+  "meses": [
+    {
+      "id": 1,
+      "nombre": "Mayo 2026 (15-31)",
+      "tipo": "nocturno",
+      "fechaInicio": "2026-05-15",
+      "fechaFin": "2026-05-31",
+      "horario": [
+        { "hora": "11:00", "actividad": "Levantar + higiene + lavar dientes", "duracion": 30 },
+        { "hora": "11:30", "actividad": "Desayuno", "duracion": 30 },
+        { "hora": "12:00", "actividad": "Estudio comida (si hay tarea)", "duracion": 60, "flexible": true },
+        { "hora": "13:00", "actividad": "Tiempo libre", "duracion": 60 },
+        { "hora": "14:00", "actividad": "Almuerzo", "duracion": 60 },
+        { "hora": "15:00", "actividad": "BLENDER (lun, mié, vie)", "duracion": 120 },
+        { "hora": "17:00", "actividad": "EJERCICIO (mar, jue, sáb)", "duracion": 90 },
+        { "hora": "18:30", "actividad": "BLENDER (mar, jue, sáb, dom)", "duracion": 90 },
+        { "hora": "20:00", "actividad": "Once", "duracion": 60 },
+        { "hora": "21:00", "actividad": "Tiempo libre", "duracion": 150 },
+        { "hora": "23:30", "actividad": "Preparar dormir + lavar dientes", "duracion": 30 },
+        { "hora": "00:00", "actividad": "Dormir", "duracion": 660 }
+      ],
+      "ideas": {
+        "1": "📹 Short: el internet se siente vacío",
+        "3": "📹 Short: NO PODEMOS DEJAR EL CELULAR",
+        "5": "📹 Short: extrañar algo que nunca pasó",
+        "7": "📹 Short: LA ANSIEDAD DEL SCROLL",
+        "9": "📹 Short: por qué todo se ve igual ahora",
+        "11": "📹 Short: YA NADIE DISFRUTA NADA",
+        "13": "📹 Short: el silencio que nos da miedo",
+        "21": "📹 Short: un adelanto de lo que viene...",
+        "28": "🎬 Largo: EL CANSANCIO DE NO HACER NADA"
+      }
+    },
+    {
+      "id": 2,
+      "nombre": "Junio 2026",
+      "tipo": "estandar",
+      "fechaInicio": "2026-06-01",
+      "fechaFin": "2026-06-30",
+      "horario": [
+        { "hora": "08:00", "actividad": "Levantar + higiene + lavar dientes", "duracion": 30 },
+        { "hora": "08:30", "actividad": "Desayuno", "duracion": 30 },
+        { "hora": "09:00", "actividad": "Estudio comida (solo si hay tarea)", "duracion": 60, "flexible": true },
+        { "hora": "10:00", "actividad": "Tiempo libre", "duracion": 60 },
+        { "hora": "11:00", "actividad": "BLENDER (lun, vie)", "duracion": 120 },
+        { "hora": "13:00", "actividad": "Almuerzo", "duracion": 60 },
+        { "hora": "15:00", "actividad": "BLENDER (mié, dom)", "duracion": 90 },
+        { "hora": "17:00", "actividad": "EJERCICIO (mar, jue)", "duracion": 30 },
+        { "hora": "17:30", "actividad": "Ducha", "duracion": 30 },
+        { "hora": "18:00", "actividad": "Once", "duracion": 30 },
+        { "hora": "18:30", "actividad": "Tiempo libre", "duracion": 180 },
+        { "hora": "21:30", "actividad": "Preparar dormir + lavar dientes", "duracion": 30 },
+        { "hora": "22:00", "actividad": "Dormir", "duracion": 600 }
+      ],
+      "ideas": {
+        "1": "📹 Short: estética de los 2000",
+        "3": "📹 Short: ¿POR QUÉ AMAMOS LO VIEJO?",
+        "5": "📹 Short: el vhs se sentía real",
+        "7": "📹 Short: SONIDOS QUE DAN PAZ",
+        "9": "📹 Short: extrañar algo que no pasó",
+        "11": "📹 Short: LOS JUEGOS DE ANTES",
+        "13": "📹 Short: memorias prestadas",
+        "28": "🎬 Largo: EXTRAÑAR UNA ÉPOCA QUE NO VIVIMOS"
+      }
+    }
+  ],
+  "habitos": [
+    { "id": "levantarse", "nombre": "🌅 Levantarse a tiempo", "hora": "08:00" },
+    { "id": "desayuno", "nombre": "🍳 Desayuno saludable", "hora": "08:30" },
+    { "id": "estudio_comida", "nombre": "📚 Estudio de cocina (si hay tarea)", "hora": "09:00", "flexible": true },
+    { "id": "blender", "nombre": "🎨 Práctica en Blender", "hora": "11:00" },
+    { "id": "almuerzo", "nombre": "🍽️ Almuerzo", "hora": "13:00" },
+    { "id": "ejercicio", "nombre": "💪 Ejercicio", "hora": "17:00" },
+    { "id": "once", "nombre": "☕ Once", "hora": "18:00" },
+    { "id": "preparar_dormir", "nombre": "🛁 Preparar para dormir", "hora": "21:30" },
+    { "id": "dormir", "nombre": "😴 Dormir", "hora": "22:00" }
+  ],
+  "temasMensuales": {
+    "2": "La nostalgia que no nos pertenece",
+    "3": "La paradoja de estar siempre conectado",
+    "4": "El parálisis por exceso de opciones",
+    "5": "Lugares que no deberían existir",
+    "6": "La mentira de la productividad",
+    "7": "Lo que el internet nos quitó",
+    "8": "Miedos generacionales silenciosos",
+    "9": "El costo de la 'estética'",
+    "10": "La saturación del mundo moderno",
+    "11": "Cómo nos queremos hoy",
+    "12": "Cerrando el ciclo"
+  }
+}
